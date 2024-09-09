@@ -10,3 +10,7 @@ class CustomerAdmin(admin.ModelAdmin):
         'created',
         'updated'
     )
+    search_fields = (
+        'nickname',
+        'id'
+    )
