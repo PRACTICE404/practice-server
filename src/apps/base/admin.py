@@ -1,3 +1,4 @@
-from django.contrib import admin
-
-# Register your models here.
+list_display_of_record = (
+    'created',
+    'updated'
+)

@@ -7,10 +7,15 @@ from . import models
 class ProjectAdmin(admin.ModelAdmin):
     list_display = (
         'title',
+        'id',
         'customer',
         'updated',
         'created'
     )
     autocomplete_fields = (
         'customer',
+    )
+    search_fields = (
+        'id',
+        'title',
     )
