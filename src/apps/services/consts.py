@@ -1,0 +1,1 @@
+SERVICE_SHOW_TECHNOLOGY_AREAS_GET_PARAM_NAME = 'show_technology_areas'

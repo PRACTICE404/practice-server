@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'apps.payments',
     'apps.projects',
     'apps.sessions_',
-    'apps.marketplaces'
+    'apps.marketplaces',
+    'apps.services'
 ]
 
 MIDDLEWARE = [

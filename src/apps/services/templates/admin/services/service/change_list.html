@@ -1,0 +1,12 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block result_list %}
+    {% if request.GET.show_technology_areas != "1" %}
+        <a class="button" href="?show_technology_areas=1">👁&nbsp;&nbsp;SHOW TECHNOLOGY AREAS</a>
+        <br/><br/>
+    {% else %}
+        <a class="button" href="./">❌&nbsp;&nbsp;HIDE TECHNOLOGY AREAS</a>
+        <br/><br/>
+    {% endif %}
+{{ block.super }} {% endblock %}
