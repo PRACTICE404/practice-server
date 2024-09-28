@@ -23,6 +23,20 @@ class AccountAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(models.DepositDistribution, site=project_manager_admin_site)
+@admin.register(models.DepositDistribution)
+class DepositDistributionAdmin(admin.ModelAdmin):
+    list_display = (
+        'order',
+        'deposit',
+        'value'
+    )
+
+
+class DepositDistributionInline(admin.TabularInline):
+    model = models.DepositDistribution
+
+
 @admin.register(models.Deposit, site=project_manager_admin_site)
 @admin.register(models.Deposit)
 class DepositAdmin(admin.ModelAdmin):
@@ -30,6 +44,9 @@ class DepositAdmin(admin.ModelAdmin):
         'account',
         'value',
         *list_display_of_record
+    )
+    inlines = (
+        DepositDistributionInline,
     )
 
 

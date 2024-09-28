@@ -1,10 +1,11 @@
 from django.db import models
 
 from apps.base.models import Record
+from apps.orders.models import Order
 
 
 class Currency(Record):
-    name = models.CharField(max_length=12)
+    name = models.CharField(max_length=24)
     code = models.CharField(max_length=8)
 
     def __str__(self):
@@ -49,6 +50,15 @@ class Withdraw(Operation):
 
     class Meta:
         verbose_name_plural = '(B.B) Withdraw'
+
+
+class DepositDistribution(Record):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    deposit = models.ForeignKey(Deposit, on_delete=models.CASCADE)
+    value = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f'{self.deposit} > {self.order} ({self.value})'
 
 
 class Swap(Record):
