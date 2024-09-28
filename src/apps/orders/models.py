@@ -5,12 +5,21 @@ from apps.projects.models import Project
 
 
 class Order(Record):
+    STATUS_CHOICES = (
+        ('1', 'active'),
+        ('2', 'pending'),
+        ('3', 'finished'),
+        ('4', 'canceled')
+    )
+
     title = models.CharField(max_length=64)
     project = models.ForeignKey(to=Project, on_delete=models.CASCADE)
+    status = models.CharField(max_length=4, choices=STATUS_CHOICES, default='2')  # NOQA
 
     class Meta:
         verbose_name_plural = '(A) Orders'
 
+    @property
     def estimate(self):
         return self.epics.aggregate(models.Sum('tasks__estimate'))['tasks__estimate__sum']  # NOQA
 
@@ -25,6 +34,7 @@ class Epic(Record):
     class Meta:
         verbose_name_plural = '(B) Epics'
 
+    @property
     def estimate(self):
         return self.tasks.aggregate(models.Sum('estimate'))['estimate__sum']
 

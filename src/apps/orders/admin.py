@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.contrib import admin
 
 from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
@@ -10,12 +11,15 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'id',
+        'hours_spent',
+        'estimate',
         'epic',
         'is_backlog',
         'status',
-        'estimate',
-        'created',
-        'updated'
+    )
+    list_editable = (
+        'status',
+        'is_backlog'
     )
     list_filter = (
         'is_backlog',
@@ -30,6 +34,14 @@ class TaskAdmin(admin.ModelAdmin):
     autocomplete_fields = (
         'epic',
     )
+
+    def hours_spent(self, obj):
+        minutes = obj.session_distributions.aggregate(Sum('minutes'))['minutes__sum']  # NOQA
+
+        if minutes == 0 or minutes is None:
+            return 0
+        else:
+            return f'{round(minutes / 60, 2)} ({round(minutes / 60 / obj.estimate * 100, 1)}%)'  # NOQA
 
 
 class TaskInline(admin.TabularInline):
@@ -48,10 +60,9 @@ class EpicAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'id',
-        'order',
+        'hours_spent',
         'estimate',
-        'updated',
-        'created'
+        'order'
     )
     search_fields = (
         'id',
@@ -64,6 +75,14 @@ class EpicAdmin(admin.ModelAdmin):
         TaskInline,
     )
 
+    def hours_spent(self, obj):
+        minutes = obj.tasks.aggregate(Sum('session_distributions__minutes'))['session_distributions__minutes__sum']  # NOQA
+
+        if minutes == 0 or minutes is None:
+            return 0
+        else:
+            return f'{round(minutes / 60, 2)} ({round(minutes / 60 / obj.estimate * 100, 1)}%)'  # NOQA
+
 
 class EpicInline(admin.TabularInline):
     model = models.Epic
@@ -75,10 +94,16 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'id',
-        'project',
+        'hours_spent',
         'estimate',
-        'updated',
-        'created'
+        'status',
+        'project'
+    )
+    list_editable = (
+        'status',
+    )
+    list_filter = (
+        'status',
     )
     inlines = (
         EpicInline,
@@ -90,3 +115,11 @@ class OrderAdmin(admin.ModelAdmin):
     autocomplete_fields = (
         'project',
     )
+
+    def hours_spent(self, obj):
+        minutes = obj.epics.aggregate(Sum('tasks__session_distributions__minutes'))['tasks__session_distributions__minutes__sum']  # NOQA
+
+        if minutes == 0 or minutes is None:
+            return 0
+        else:
+            return f'{round(minutes / 60, 2)} ({round(minutes / 60 / obj.estimate * 100, 1)}%)'  # NOQA

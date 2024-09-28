@@ -19,7 +19,7 @@ class SessionDistribution(Record):
     task = models.ForeignKey(
         Task,
         on_delete=models.CASCADE,
-        related_name='distributions'
+        related_name='session_distributions'
     )
     session = models.ForeignKey(
         Session,
