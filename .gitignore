@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 
 *.code-workspace
+
+./src/staticfiles
+
+./src/mediafiles
