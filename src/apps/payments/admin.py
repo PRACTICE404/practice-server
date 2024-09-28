@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
 from apps.base.admin import list_display_of_record
 from . import models
 
@@ -22,6 +23,7 @@ class AccountAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(models.Deposit, site=project_manager_admin_site)
 @admin.register(models.Deposit)
 class DepositAdmin(admin.ModelAdmin):
     list_display = (

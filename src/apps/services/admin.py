@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.utils.html import format_html
 
+from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
 from apps.positions.marketer.admin import admin_site as marketer_admin_site
 from . import models
 from . import consts
@@ -90,6 +91,7 @@ class ServiceAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(models.Portfolio, site=project_manager_admin_site)
 @admin.register(models.Portfolio, site=marketer_admin_site)
 @admin.register(models.Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):

@@ -1,8 +1,10 @@
 from django.contrib import admin
 
+from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
 from . import models
 
 
+@admin.register(models.Task, site=project_manager_admin_site)
 @admin.register(models.Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
@@ -38,6 +40,7 @@ class TaskInline(admin.TabularInline):
     )
 
 
+@admin.register(models.Epic, site=project_manager_admin_site)
 @admin.register(models.Epic)
 class EpicAdmin(admin.ModelAdmin):
     list_display = (
@@ -64,6 +67,7 @@ class EpicInline(admin.TabularInline):
     model = models.Epic
 
 
+@admin.register(models.Order, site=project_manager_admin_site)
 @admin.register(models.Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
