@@ -163,6 +163,6 @@ cython_debug/
 
 *.code-workspace
 
-./src/staticfiles
+staticfiles/
 
-./src/mediafiles
+mediafiles/
