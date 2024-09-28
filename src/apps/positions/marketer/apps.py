@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MarketerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'marketer'
+    name = 'apps.positions.marketer'
