@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from apps.base.models import Record
@@ -29,6 +30,12 @@ class SessionDistribution(Record):
 
     def __str__(self):
         return f"{self.task} (self.minutes)"
+
+    def clean_fields(self, exclude=None):
+        if (self.session.distributions.exclude(id=self.id).aggregate(models.Sum('minutes'))['minutes__sum'] or 0) + self.minutes > self.session.minutes_working:  # NOQA
+            raise ValidationError({
+                'minutes': 'More than possible is distributed!',
+            })
 
     class Meta:
         verbose_name_plural = 'Session distribution'
