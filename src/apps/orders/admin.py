@@ -1,7 +1,9 @@
 from django.db.models import Sum
 from django.contrib import admin
+from django.utils.html import format_html
 
 from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
+from apps.payments.models import Account
 from . import models
 
 
@@ -96,6 +98,7 @@ class OrderAdmin(admin.ModelAdmin):
         'id',
         'hours_spent',
         'estimate',
+        'deposits_made',
         'status',
         'project'
     )
@@ -123,3 +126,11 @@ class OrderAdmin(admin.ModelAdmin):
             return 0
         else:
             return f'{round(minutes / 60, 2)} ({round(minutes / 60 / obj.estimate * 100, 1)}%)'  # NOQA
+
+    def deposits_made(self, obj):
+        # value = obj.deposit_distributions.aggregate(Sum('value'))['value__sum']  # NOQA
+        values = [
+            f"{obj.deposit_distributions.filter(deposit__account=account).aggregate(Sum('value'))['value__sum']} {account.currency}" for  # NOQA
+            account in Account.objects.all()
+        ]
+        return format_html(',<br>'.join(values))
