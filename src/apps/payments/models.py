@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from apps.base.models import Record
@@ -54,11 +55,17 @@ class Withdraw(Operation):
 
 class DepositDistribution(Record):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    deposit = models.ForeignKey(Deposit, on_delete=models.CASCADE)
+    deposit = models.ForeignKey(Deposit, on_delete=models.CASCADE, related_name='distributions')  # NOQA
     value = models.PositiveIntegerField()
 
     def __str__(self):
         return f'{self.deposit} > {self.order} ({self.value})'
+
+    def clean_fields(self, exclude=None):
+        if (self.deposit.distributions.exclude(id=self.id).aggregate(models.Sum('value'))['value__sum'] or 0) + self.value > self.deposit.value:  # NOQA
+            raise ValidationError({
+                'value': 'More than possible is distributed!',
+            })
 
 
 class Swap(Record):
