@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.base.models import Record
+from apps.orders.models import Task
 
 
 class Session(Record):
@@ -11,3 +12,23 @@ class Session(Record):
 
     def __str__(self):
         return f"{self.date} {self.minutes_working}"
+
+
+class SessionDistribution(Record):
+    task = models.ForeignKey(
+        Task,
+        on_delete=models.CASCADE,
+        related_name='distributions'
+    )
+    session = models.ForeignKey(
+        Session,
+        on_delete=models.CASCADE,
+        related_name='distributions'
+    )
+    minutes = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.task} (self.minutes)"
+
+    class Meta:
+        verbose_name_plural = 'Session distribution'

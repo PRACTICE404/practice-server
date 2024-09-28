@@ -23,7 +23,9 @@ class TaskAdmin(admin.ModelAdmin):
     )
     search_fields = (
         'id',
-        'title'
+        'title',
+        'epic__title',
+        'epic__order__title'
     )
     autocomplete_fields = (
         'epic',
