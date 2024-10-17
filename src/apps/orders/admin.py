@@ -56,6 +56,20 @@ class TaskInline(admin.TabularInline):
     )
 
 
+@admin.register(models.OrderHistory, site=project_manager_admin_site)
+@admin.register(models.OrderHistory)
+class OrderHistoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'order',
+        'text',
+        'updated',
+        'created'
+    )
+    autocomplete_fields = (
+        'order',
+    )
+
+
 @admin.register(models.Epic, site=project_manager_admin_site)
 @admin.register(models.Epic)
 class EpicAdmin(admin.ModelAdmin):
@@ -88,6 +102,16 @@ class EpicAdmin(admin.ModelAdmin):
 
 class EpicInline(admin.TabularInline):
     model = models.Epic
+    show_change_link = True
+    extra = 0
+    classes = ['collapse']
+
+
+class HistoryInline(admin.TabularInline):
+    model = models.OrderHistory
+    show_change_link = True
+    extra = 0
+    classes = ['collapse']
 
 
 @admin.register(models.Order, site=project_manager_admin_site)
@@ -110,6 +134,7 @@ class OrderAdmin(admin.ModelAdmin):
     )
     inlines = (
         EpicInline,
+        HistoryInline
     )
     search_fields = (
         'id',

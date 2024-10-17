@@ -27,6 +27,17 @@ class Order(Record):
         return f"{self.project.title} >> {self.title}"
 
 
+class OrderHistory(Record):
+    order = models.ForeignKey(to=Order, on_delete=models.CASCADE, related_name='histories')  # NOQA
+    text = models.TextField()
+
+    class Meta:
+        verbose_name_plural = '(D) Histories'
+
+    def __str__(self):
+        return f'{self.order} > {self.text}'
+
+
 class Epic(Record):
     title = models.CharField(max_length=64)
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, related_name='epics')  # NOQA
