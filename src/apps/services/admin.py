@@ -91,7 +91,6 @@ class ServiceAdmin(admin.ModelAdmin):
         )
 
 
-@admin.register(models.Portfolio, site=project_manager_admin_site)
 @admin.register(models.Portfolio, site=marketer_admin_site)
 @admin.register(models.Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
@@ -99,6 +98,13 @@ class PortfolioAdmin(admin.ModelAdmin):
         'title',
         'service',
         'is_finished'
+    )
+
+
+@admin.register(models.Portfolio, site=project_manager_admin_site)
+class PortfolioAdminForProjectManager(PortfolioAdmin):
+    autocomplete_fields = (
+        'project',
     )
 
 

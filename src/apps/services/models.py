@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.base.models import Record
+from apps.projects.models import Project
 
 
 class ProgrammingLanguage(Record):
@@ -69,6 +70,12 @@ class Service(Record):
 
 class Portfolio(Record):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
 
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True, null=True)

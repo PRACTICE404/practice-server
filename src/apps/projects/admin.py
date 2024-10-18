@@ -19,5 +19,5 @@ class ProjectAdmin(admin.ModelAdmin):
     )
     search_fields = (
         'id',
-        'title',
+        'title'
     )
