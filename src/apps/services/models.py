@@ -56,6 +56,7 @@ class Service(Record):
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
+
     technology_areas = models.ManyToManyField(TechnologyArea, blank=True)
 
     def __str__(self):
@@ -69,6 +70,11 @@ class Service(Record):
 
 
 class Portfolio(Record):
+
+    title = models.CharField(max_length=128)
+    description = models.TextField(blank=True, null=True)
+    is_finished = models.BooleanField(default=False)
+
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     project = models.ForeignKey(
         Project,
@@ -76,10 +82,6 @@ class Portfolio(Record):
         blank=True,
         null=True
     )
-
-    title = models.CharField(max_length=128)
-    description = models.TextField(blank=True, null=True)
-    is_finished = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.service} {self.title}'

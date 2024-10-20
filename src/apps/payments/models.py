@@ -54,9 +54,10 @@ class Withdraw(Operation):
 
 
 class DepositDistribution(Record):
+    value = models.PositiveIntegerField()
+
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='deposit_distributions')  # NOQA
     deposit = models.ForeignKey(Deposit, on_delete=models.CASCADE, related_name='distributions')  # NOQA
-    value = models.PositiveIntegerField()
 
     def __str__(self):
         return f'{self.deposit} > {self.order} ({self.value})'

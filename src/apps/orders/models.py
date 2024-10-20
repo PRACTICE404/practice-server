@@ -62,11 +62,12 @@ class Task(Record):
     )
 
     title = models.CharField(max_length=128)
-    epic = models.ForeignKey(to=Epic, on_delete=models.CASCADE, related_name='tasks')  # NOQA
     status = models.CharField(max_length=24, choices=CHOICES_STATUS)
     is_backlog = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
     estimate = models.FloatField(default=0)
+
+    epic = models.ForeignKey(to=Epic, on_delete=models.CASCADE, related_name='tasks')  # NOQA
 
     class Meta:
         verbose_name_plural = '(C) Tasks'
