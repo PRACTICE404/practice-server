@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'apps.positions',
     'apps.positions.developer',
     'apps.positions.finance_manager',
-    'apps.positions.general_manager',
     'apps.positions.marketer',
     'apps.positions.project_manager',
     'apps.positions.salesman'
