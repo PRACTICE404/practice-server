@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BusinessAnalystConfig(AppConfig):
+class FinanceManagerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.positions.business_analyst'
+    name = 'apps.positions.finance_manager'

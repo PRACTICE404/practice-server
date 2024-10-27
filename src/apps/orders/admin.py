@@ -2,12 +2,10 @@ from django.db.models import Sum
 from django.contrib import admin
 from django.utils.html import format_html
 
-from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
 from apps.payments.models import Account
 from . import models
 
 
-@admin.register(models.Task, site=project_manager_admin_site)
 @admin.register(models.Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
@@ -56,7 +54,6 @@ class TaskInline(admin.TabularInline):
     )
 
 
-@admin.register(models.OrderHistory, site=project_manager_admin_site)
 @admin.register(models.OrderHistory)
 class OrderHistoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -70,7 +67,6 @@ class OrderHistoryAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(models.Epic, site=project_manager_admin_site)
 @admin.register(models.Epic)
 class EpicAdmin(admin.ModelAdmin):
     list_display = (
@@ -114,7 +110,6 @@ class HistoryInline(admin.TabularInline):
     classes = ['collapse']
 
 
-@admin.register(models.Order, site=project_manager_admin_site)
 @admin.register(models.Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (

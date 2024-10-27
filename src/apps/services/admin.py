@@ -2,21 +2,17 @@ from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
 from django.utils.html import format_html
 
-from apps.positions.project_manager.admin import admin_site as project_manager_admin_site  # NOQA
-from apps.positions.marketer.admin import admin_site as marketer_admin_site
 from . import models
 from . import consts
 
 
-@admin.register(models.ProgrammingLanguage, site=marketer_admin_site)
 @admin.register(models.ProgrammingLanguage)
-class ProgramminLanguageAdmin(admin.ModelAdmin):
+class ProgrammingLanguageAdmin(admin.ModelAdmin):
     list_display = (
         'name',
     )
 
 
-@admin.register(models.Technology, site=marketer_admin_site)
 @admin.register(models.Technology)
 class TechnologyAdmin(admin.ModelAdmin):
     list_display = (
@@ -34,7 +30,6 @@ class TechnologyAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(models.TechnologyArea, site=marketer_admin_site)
 @admin.register(models.TechnologyArea)
 class TechnologyAreaAdmin(admin.ModelAdmin):
     list_display = (
@@ -60,7 +55,6 @@ class PassShowTechnologyAreas(SimpleListFilter):
         return queryset
 
 
-@admin.register(models.Service, site=marketer_admin_site)
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
     change_list_template = "admin/services/service/change_list.html"
@@ -91,7 +85,6 @@ class ServiceAdmin(admin.ModelAdmin):
         )
 
 
-@admin.register(models.Portfolio, site=marketer_admin_site)
 @admin.register(models.Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     list_display = (
@@ -99,16 +92,11 @@ class PortfolioAdmin(admin.ModelAdmin):
         'service',
         'is_finished'
     )
-
-
-@admin.register(models.Portfolio, site=project_manager_admin_site)
-class PortfolioAdminForProjectManager(PortfolioAdmin):
     autocomplete_fields = (
         'project',
     )
 
 
-@admin.register(models.Faq, site=marketer_admin_site)
 @admin.register(models.Faq)
 class FaqAdmin(admin.ModelAdmin):
     list_display = (

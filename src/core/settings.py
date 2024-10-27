@@ -51,7 +51,13 @@ INSTALLED_APPS = [
     'apps.services',
     'apps.posts',
     'apps.positions',
-    'apps.positions.marketer'
+    'apps.positions.business_analyst',
+    'apps.positions.developer',
+    'apps.positions.finance_manager',
+    'apps.positions.general_manager',
+    'apps.positions.marketer',
+    'apps.positions.project_manager',
+    'apps.positions.salesman'
 ]
 
 MIDDLEWARE = [

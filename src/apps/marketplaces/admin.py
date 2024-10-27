@@ -1,10 +1,8 @@
 from django.contrib import admin
 
-from apps.positions.marketer.admin import admin_site as marketer_admin_site
 from . import models
 
 
-@admin.register(models.Marketplace, site=marketer_admin_site)
 @admin.register(models.Marketplace)
 class MarketplaceAdmin(admin.ModelAdmin):
     list_display = (
@@ -19,7 +17,6 @@ class MarketplaceAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(models.MarketplaceAccount, site=marketer_admin_site)
 @admin.register(models.MarketplaceAccount)
 class MarketplaceAccountAdmin(admin.ModelAdmin):
     list_display = (
