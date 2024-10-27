@@ -18,9 +18,14 @@ class SessionAdmin(admin.ModelAdmin):
         'is_distributed',
         *list_display_of_record
     )
-    inlines = (
-        SessionDistributionInline,
-    )
+
+    def get_inlines(self, request, obj):
+        if not obj:
+            return ()
+
+        return (
+            SessionDistributionInline,
+        )
 
     def is_distributed(self, obj):
         return '✅' if obj.distributions.aggregate(Sum('minutes'))['minutes__sum'] == obj.minutes_working else '❌'  # NOQA

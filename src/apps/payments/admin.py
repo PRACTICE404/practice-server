@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Sum
 
 from apps.base.admin import list_display_of_record
 from . import models
@@ -31,11 +32,20 @@ class DepositAdmin(admin.ModelAdmin):
     list_display = (
         'account',
         'value',
+        'is_distributed',
         *list_display_of_record
     )
-    inlines = (
-        DepositDistributionInline,
-    )
+
+    def get_inlines(self, request, obj):
+        if not obj:
+            return ()
+
+        return (
+            DepositDistributionInline,
+        )
+
+    def is_distributed(self, obj):
+        return '✅' if obj.distributions.aggregate(Sum('value'))['value__sum'] == obj.value else '❌'  # NOQA
 
 
 @admin.register(models.Withdraw)

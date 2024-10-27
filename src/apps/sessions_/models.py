@@ -7,9 +7,13 @@ from apps.orders.models import Task
 
 class Session(Record):
     date = models.DateField()
-    obsidian_id = models.PositiveIntegerField()
     minutes_working = models.PositiveIntegerField()
-    document = models.FileField(upload_to='sessions/session/document/', blank=True, null=True)  # NOQA
+    obsidian_id = models.PositiveIntegerField(blank=True, null=True)
+    document = models.FileField(
+        upload_to='sessions/session/document/',
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return f"{self.date} {self.minutes_working}"
@@ -26,7 +30,9 @@ class SessionDistribution(Record):
         on_delete=models.CASCADE,
         related_name='distributions'
     )
-    minutes = models.PositiveIntegerField()
+    minutes = models.PositiveIntegerField(
+        help_text='Sum of minutes in session have to be equal to it\'s minutes'
+    )
 
     def __str__(self):
         return f"{self.task} (self.minutes)"
