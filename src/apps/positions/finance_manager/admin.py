@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from apps.base.admin import SummaryDailyAdmin
+
 from apps.payments.admin import (
     CurrencyAdmin,
     AccountAdmin,
@@ -14,6 +16,8 @@ from apps.payments.models import (
     Withdraw,
     Swap
 )
+
+from . import models
 
 
 class FinanceManagerAdminSite(admin.AdminSite):
@@ -46,3 +50,12 @@ class WithdrawAdminForFinanceManager(WithdrawAdmin):
 @admin.register(Swap, site=admin_site)
 class SwapAdminForFinanceManager(SwapAdmin):
     pass
+
+
+@admin.register(models.DepositSummaryByDays, site=admin_site)
+class DepositSummaryAdmin(SummaryDailyAdmin):
+    model = Deposit
+    date_hierarchy = 'date'
+    date_arg_name = 'date'
+    title = 'Deposit summary'
+    list_filter = ('account', )

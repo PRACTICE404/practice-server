@@ -31,6 +31,7 @@ class DepositDistributionInline(admin.TabularInline):
 class DepositAdmin(admin.ModelAdmin):
     list_display = (
         'account',
+        'date',
         'value',
         'is_distributed',
         *list_display_of_record

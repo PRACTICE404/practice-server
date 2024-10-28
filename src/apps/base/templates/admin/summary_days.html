@@ -1,0 +1,38 @@
+{% extends 'admin/change_list.html' %}
+
+{% block content_title %}
+    <h1> {{title}} for {{month}} ({{year}}) (daily)</h1>
+{% endblock %}
+
+{% block result_list %}
+    <br><br>
+    <div class=”results”>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <div class="text">
+                            <a href="#">Day of month</a>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">Deposit sum</a>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in summary %}
+                    <tr class=”{% cycle 'row1' 'row2' %}”>
+                        <td> {{ row.0 }}, {{month}} </td>
+                        <td> {{ row.1 }} $</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block pagination %}
+{% endblock %}

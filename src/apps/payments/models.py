@@ -31,6 +31,7 @@ class Operation(Record):
     symbol = "+"
     value = models.PositiveIntegerField()
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.symbol}{self.value} {self.account.currency} ({self.account.name})"  # NOQA
