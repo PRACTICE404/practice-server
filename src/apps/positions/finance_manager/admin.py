@@ -54,8 +54,9 @@ class SwapAdminForFinanceManager(SwapAdmin):
 
 @admin.register(models.DepositSummaryByDays, site=admin_site)
 class DepositSummaryAdmin(SummaryDailyAdmin):
-    model = Deposit
+    model = models.DepositSummaryByDays
     date_hierarchy = 'date'
-    date_arg_name = 'date'
     title = 'Deposit summary'
     list_filter = ('account', )
+    value_name = 'value'
+    unit_name = '$'

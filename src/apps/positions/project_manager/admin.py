@@ -3,6 +3,8 @@ from django.contrib import admin
 from apps.customers.admin import CustomerAdmin
 from apps.customers.models import Customer
 
+from apps.base.admin import SummaryDailyAdmin
+
 from apps.projects.admin import ProjectAdmin
 from apps.projects.models import Project
 
@@ -27,6 +29,8 @@ from apps.payments.models import Deposit
 
 from apps.services.admin import PortfolioAdmin
 from apps.services.models import Portfolio
+
+from . import models
 
 
 class ProjectManagerAdminSite(admin.AdminSite):
@@ -79,3 +83,14 @@ class DepositAdminForProjectManager(DepositAdmin):
 @admin.register(Portfolio, site=admin_site)
 class PortfolioAdminForProjectManager(PortfolioAdmin):
     pass
+
+
+@admin.register(models.SessionSummaryByDays, site=admin_site)
+class SessionSummaryByDaysAdmin(SummaryDailyAdmin):
+    model = models.SessionSummaryByDays
+    date_hierarchy = 'date'
+    date_arg_name = 'date'
+    title = 'Session summary'
+    value_name = 'minutes_working'
+    unit_name = 'hours'
+    value_func = lambda self, x: round(x / 60, 1)  # NOQA

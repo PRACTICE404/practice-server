@@ -17,8 +17,10 @@ class SummaryDailyAdmin(admin.ModelAdmin):
     change_list_template = 'admin/summary_days.html'
     model = None
     date_hierarchy = ''
-    date_arg_name = ''
     title = ''
+    value_name = ''
+    unit_name = ''
+    value_func = lambda self, x: x  # NOQA
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -48,17 +50,20 @@ class SummaryDailyAdmin(admin.ModelAdmin):
         response.context_data['title'] = self.title
         response.context_data['year'] = year
         response.context_data['month'] = month_plural
+        response.context_data['unit'] = self.unit_name
         response.context_data['summary'] = tuple(
             (
                 day + 1,
-                qs.filter(
-                    **{
-                        f'{self.date_arg_name}__year': year,
-                        f'{self.date_arg_name}__month': month,
-                        f'{self.date_arg_name}__day': day+1
-                    }
+                self.value_func(
+                    qs.filter(
+                        **{
+                            f'{self.date_hierarchy}__year': year,
+                            f'{self.date_hierarchy}__month': month,
+                            f'{self.date_hierarchy}__day': day+1
+                        }
+                    )
+                    .aggregate(Sum(self.value_name))[f'{self.value_name}__sum'] or 0  # NOQA
                 )
-                .aggregate(Sum('value'))['value__sum'] or 0
             ) for day in range(monthrange(2024, 8)[1])
         )
         return response

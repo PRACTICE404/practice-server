@@ -17,7 +17,7 @@
                     </th>
                     <th>
                         <div class="text">
-                            <a href="#">Deposit sum</a>
+                            <a href="#">{{title}}</a>
                         </div>
                     </th>
                 </tr>
@@ -25,8 +25,16 @@
             <tbody>
                 {% for row in summary %}
                     <tr class=”{% cycle 'row1' 'row2' %}”>
-                        <td> {{ row.0 }}, {{month}} </td>
-                        <td> {{ row.1 }} $</td>
+                        <td>
+                            {{ row.0 }}, {{month}}
+                        </td>
+                        <td>
+                            {% if row.1 > 0 %}
+                                {{ row.1 }} {{unit}}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
