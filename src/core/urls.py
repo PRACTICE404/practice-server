@@ -8,7 +8,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls'))
+    path('summernote/', include('django_summernote.urls')),
+    path('api/sessions/', include('apps.sessions_.urls')),
 ]
 
 if settings.DEBUG:
