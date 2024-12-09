@@ -90,6 +90,11 @@ class PortfolioAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'service',
+        'is_fake',
+        'is_finished'
+    )
+    list_filter = (
+        'is_fake',
         'is_finished'
     )
     autocomplete_fields = (
