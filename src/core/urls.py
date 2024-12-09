@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('api/customers/', include('apps.customers.urls')),
     path('api/sessions/', include('apps.sessions_.urls')),
 ]
 
