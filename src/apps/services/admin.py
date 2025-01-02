@@ -61,6 +61,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = (
         'technology_areas',
         'is_active',
+        'is_turnkey',
         PassShowTechnologyAreas
     )
     inlines = (
@@ -76,13 +77,18 @@ class ServiceAdmin(admin.ModelAdmin):
         else:
             return "-"
 
+    def portfolio_count(self, obj):
+        return obj.portfolio.count()
+
     def get_list_display(self, request):
         return (
             'title',
             *(('related_technology_areas', )
                 if request.GET.get(consts.SERVICE_SHOW_TECHNOLOGY_AREAS_GET_PARAM_NAME) == '1'  # NOQA
                 else ()),
-            'is_active'
+            'is_active',
+            'is_turnkey',
+            'portfolio_count'
         )
 
     def get_list_editable(self, request):
@@ -101,7 +107,8 @@ class PortfolioAdmin(admin.ModelAdmin):
     )
     list_filter = (
         'is_fake',
-        'is_finished'
+        'is_finished',
+        'service'
     )
     autocomplete_fields = (
         'project',

@@ -56,6 +56,7 @@ class Service(Record):
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
+    is_turnkey = models.BooleanField(default=False)
 
     technology_areas = models.ManyToManyField(TechnologyArea, blank=True)
 
@@ -76,7 +77,11 @@ class Portfolio(Record):
     is_finished = models.BooleanField(default=False)
     is_fake = models.BooleanField(default=False)
 
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name='portfolio'
+    )
     project = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
