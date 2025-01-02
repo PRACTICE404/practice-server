@@ -60,6 +60,7 @@ class ServiceAdmin(admin.ModelAdmin):
     change_list_template = "admin/services/service/change_list.html"
     list_filter = (
         'technology_areas',
+        'is_active',
         PassShowTechnologyAreas
     )
     inlines = (
@@ -82,6 +83,11 @@ class ServiceAdmin(admin.ModelAdmin):
                 if request.GET.get(consts.SERVICE_SHOW_TECHNOLOGY_AREAS_GET_PARAM_NAME) == '1'  # NOQA
                 else ()),
             'is_active'
+        )
+
+    def get_list_editable(self, request):
+        return (
+            'is_active',
         )
 
 
