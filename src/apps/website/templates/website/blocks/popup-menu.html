@@ -1,0 +1,78 @@
+{% load static %}
+
+<div class="popup-menu-wrap">
+  <div class="popup-menu-header">
+    <div class="left">
+      <a href="{% url 'home' %}" class="logo">ALEKS DEV <img src="{% static 'website' %}/imgs/r.svg" alt="Symble" /></a>
+      <div class="location-and-time">
+        Турция, Стамбул / <span class="realtime"></span>
+      </div>
+    </div>
+
+    <a href="#" class="close-navigation-btn theme-btn primary-bg">X ЗАКРЫТЬ</a>
+  </div>
+  <div class="popup-menu">
+    <nav>
+      {% with request.resolver_match.url_name as url_name %}
+        <ul>
+          <li class="{% if url_name == 'home' %}active{% endif %}">
+            <a href="{% url 'home' %}">
+              <span class="count">[01]</span>
+              <span>ГЛАВНАЯ</span>
+            </a>
+          </li>
+          <li class="{% if url_name == 'service-list' %}active{% endif %}">
+            <a href="{% url 'service-list' %}">
+              <span class="count">[02]</span>
+              <span>УСЛУГИ</span>
+            </a>
+          </li>
+          <li class="{% if url_name == 'post-list' %}active{% endif %}">
+            <a href="{% url 'post-list' %}">
+              <span class="count">[03]</span>
+              <span>БЛОГ</span>
+            </a>
+          </li>
+          <li class="{% if url_name == 'plan-list' %}active{% endif %}">
+            <a href="{% url 'plan-list' %}">
+              <span class="count">[04]</span>
+              <span>ТАРИФЫ</span>
+            </a>
+          </li>
+          <li class="{% if url_name == 'contacts' %}active{% endif %}">
+            <a href="{% url 'contacts' %}">
+              <span class="count">[05]</span>
+              <span>КОНТАКТЫ</span>
+            </a>
+          </li>
+        </ul>
+      {% endwith %}
+    </nav>
+  </div>
+  <div class="popup-menu-footer">
+    <div class="copyright">
+      <p>©2024 ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+
+      <ul class="social-links-text">
+        <li>
+          <a href="https://instagram.com" class="splite-text-anim">
+            <span>Instagram <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+            <span>Instagram <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com" class="splite-text-anim">
+            <span>Twitter <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+            <span>Twitter <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://facebook.com" class="splite-text-anim">
+            <span>Facebook <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+            <span>Facebook <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <main class="page-main home-page">
+    {% include 'website/blocks/popup-menu.html' %}
+
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {% include 'website/blocks/hero.html' %}
+        {% include './list.html' with objects_technology=objects_technology %}
+        {% include 'website/blocks/cta.html' %}
+        {% include 'website/blocks/footer.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

@@ -70,12 +70,33 @@ class Service(Record):
         )
 
 
+class HTMLTheme(Record):
+    title = models.CharField(max_length=255)
+    is_css_minified = models.BooleanField(default=True)
+    url_github = models.URLField(blank=True, null=True)
+    url_themeforest = models.URLField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name_plural = 'HTML themes'
+
+
 class Portfolio(Record):
 
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True, null=True)
     is_finished = models.BooleanField(default=False)
     is_fake = models.BooleanField(default=False)
+    github_url = models.URLField(blank=True, null=True)
+    html_theme = models.OneToOneField(
+        HTMLTheme,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
 
     service = models.ForeignKey(
         Service,

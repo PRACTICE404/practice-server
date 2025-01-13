@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- ===== Meta ===== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!-- ===== Favicon ===== -->
+        <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png">
+    
+        <!-- ===== Title ===== -->
+        <title>Boldz - Personal Portfolio HTML5 Template</title>
+    
+        <!-- ===== LineAwesome ===== -->
+        <link rel="stylesheet"
+            href="./assets/css/line-awesome.min.css">
+    
+    
+        <!-- ===== Fonts ===== -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+        <!-- ===== Stylesheet ===== -->
+        <link rel="stylesheet" href="{% static 'website' %}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'website' %}/css/style.css">
+        <link rel="stylesheet" href="{% static 'website' %}/css/responsive.css">
+    </head>
+<body>
+    <!-- ===== Magic Cursor Start ===== -->
+    <div id="magic-cursor">
+        <div id="ball"></div>
+    </div>
+    <!-- ===== Magic Cursor End ===== -->
+    
+    <!-- ===== Pre Loader Start ===== -->
+    <div class="preloader-wrap">
+        <div class="preloader-content">
+            <div class="logo">ALEKS DEV <img src="{% static 'website' %}/imgs/r.svg" alt="Symble"></div>
+            <div class="preloader-bar-wrap">
+                <div class="preloader-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== Pre Loader End ===== -->
+
+    {% block content %}    
+    {% endblock %}
+
+    <!-- ===== Scripts ===== -->
+    <script src="{% static 'website' %}/js/jquery.js"></script>
+    <script src="{% static 'website' %}/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'website' %}/js/gsap.min.js"></script>
+    <script src="{% static 'website' %}/js/ScrollTrigger.min.js"></script>
+    <script src="{% static 'website' %}/js/ScrollToPlugin.min.js"></script>
+
+    <script src="{% static 'website' %}/js/ScrollSmoother.min.js"></script>
+    <script src="{% static 'website' %}/js/SplitText.min.js"></script>
+    <script src="{% static 'website' %}/js/jarallax.js"></script>
+    <script src="{% static 'website' %}/js/jarallax-element.min.js"></script>
+    <script src="{% static 'website' %}/js/main.js"></script>
+    <script src="{% static 'website' %}/js/themescroll.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+  <main class="page-main contact-page">
+    {% include 'website/blocks/popup-menu.html' %}
+
+    <!-- ===== Smooth Scroll Start ===== -->
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {% include 'website/blocks/hero.html' with title='КОНТАКТЫ' %}
+        {% include './form.html' %}
+        {% include 'website/blocks/cta.html' %}
+        {% include 'website/blocks/footer.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

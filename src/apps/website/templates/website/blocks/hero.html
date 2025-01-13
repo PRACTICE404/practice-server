@@ -1,0 +1,71 @@
+{% load static %}
+
+<section class="hero-sec">
+  <div class="container">
+    <div class="hero-sec-top scroll-animation" data-animation="slide_up">
+      <div class="hero-left">
+        <a href="{% url 'home' %}" class="logo">ALEKS DEV <img src="{% static 'website' %}/imgs/r.svg" alt="Symble" /></a>
+        <div class="location-and-time">
+          Турция, Стамбул / <span class="realtime"></span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <nav class="main-menu">
+          <ul>
+            <li>
+              <a href="{% url 'portfolio-list' %}" class="splite-text-anim">
+                <span>( ПРОЕКТЫ )</span>
+                <span>( ПРОЕКТЫ )</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'contacts' %}" class="splite-text-anim">
+                <span>( ЗАКАЗАТЬ )</span>
+                <span>( ЗАКАЗАТЬ )</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <span
+            class="dropdown"
+            data-bs-theme="dark"
+          >
+            <a
+              class="theme-btn"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              РУССКИЙ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="#">РУССКИЙ</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">ENGLISH</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">TÜRKÇE</a>
+              </li>
+            </ul>
+          </span>
+          <a href="#" class="show-navigation-popover theme-btn">МЕНЮ</a>
+        </div>
+      </div>
+    </div>
+
+    {% if title %}
+      <!-- Hero Bottom -->
+      <div class="hero-sec-bottom mb-5">
+        <div class="hero-sec-bottom-left">
+          <h1 class="hero-title with-circle-shape">
+            <span class="overflow-hidden"><span class="timeline-anim scroll-animation" data-animation="slide_down">{{title}}</span></span>
+            <span class="circle-primary-shape scroll-animation" data-animation="boldz_zoom_in" data-animation-delay="0.5"></span>
+          </h1>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>

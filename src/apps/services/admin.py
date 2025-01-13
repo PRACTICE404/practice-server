@@ -97,11 +97,21 @@ class ServiceAdmin(admin.ModelAdmin):
         )
 
 
+@admin.register(models.HTMLTheme)
+class HTMLThemeAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'url_github',
+        'is_css_minified'
+    )
+
+
 @admin.register(models.Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'service',
+        'html_theme',
         'is_fake',
         'is_finished'
     )

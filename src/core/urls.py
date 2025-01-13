@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('apps.website.urls')),
     path('', include('apps.positions.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/doc/', include('django.contrib.admindocs.urls')),

@@ -15,6 +15,7 @@ class Customer(Record):
     full_name = models.CharField(max_length=64, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField(max_length=12, blank=True, null=True)
+    is_fake = models.BooleanField(default=False)
     channel = models.CharField(
         max_length=24,
         choices=CHOICES_CHANNEL,
@@ -29,3 +30,14 @@ class Customer(Record):
 
     def __str__(self):
         return self.nickname
+
+
+class CustomerReview(Record):
+    text = models.TextField()
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('created', )
+
+    def __str__(self):
+        return self.created

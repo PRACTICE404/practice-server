@@ -1,0 +1,16 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+  <main class="page-main blog-detail-page">
+    {% include 'website/blocks/popup-menu.html' %}
+
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {% include 'website/blocks/hero.html' with title='PORTFOLIO DETAIL' %}
+        {% include './detail.html' %}
+        {% include 'website/blocks/cta.html' %}
+        {% include 'website/blocks/footer.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

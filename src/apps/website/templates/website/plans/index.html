@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+  <main class="page-main pricing-page">
+    {% include 'website/blocks/popup-menu.html' %}
+
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {% include 'website/blocks/hero.html' with title='Тарифы' %}
+        {% include './plans.html' %}
+        {% include 'website/blocks/faq.html' %}
+        {% include 'website/blocks/cta.html' %}
+        {% include 'website/blocks/footer.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}
