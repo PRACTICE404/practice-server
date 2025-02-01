@@ -6,13 +6,15 @@ from apps.customers.models import Customer
 
 class Marketplace(Record):
     name = models.CharField(max_length=18)
+    link = models.URLField()
+    reviews_count = models.PositiveIntegerField()
     is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('-is_active', '-reviews_count', 'name')
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        ordering = ('-is_active', 'name')
 
 
 class MarketplaceAccount(Record):

@@ -1,96 +1,46 @@
 {% load static %}
 
 <section class="about-sec">
-    <div class="container">
-      <div class="section-header">
-        <div class="left">
-          <h2 class="title">
-            <span class="overflow-hidden"
-              ><span
-                class="timeline-anim scroll-animation text-red"
-                data-animation="slide_down"
-                >который тебе нужен.</span
-              ></span
-            >
-          </h2>
-        </div>
-        <div class="section-header-right">
-          <div class="section-subtitle">
-            <span class="white-circle"></span>
-            <span class="theme-btn primary-bg">`консультация</span>
-          </div>
-        </div>
+  <div class="container">
+    <div class="section-header">
+      <div class="left">
+        <h2 class="title"><span class="overflow-hidden"><span class="timeline-anim scroll-animation text-red" data-animation="slide_down">который тебе нужен.</span></span></h2>
       </div>
-
-      <div class="custom-row">
-        <div class="about-left-img">
-          <img src="{% static 'website' %}/imgs/about-2.jpg" alt="About" />
+      <div class="section-header-right">
+        <div class="section-subtitle">
+          <span class="white-circle"></span>
+          <span class="theme-btn primary-bg">`консультация</span>
         </div>
-
-        <div class="about-content">
-          <span class="about-title">[ ОБО МНЕ ]</span>
-          <p>
-            Меня зовут Алекс, я профессионально занимаюсь разработкой веб-сайтов и другими связанными услугами с 2019 года.
-          </p>
-          <br>
-          <p>
-            Позиционирую себя как фуллстак разработчик, иногда так же работаю как проект менеджер, консультирую малый и средний бизнес.
-          </p>
-          <br>
-          <p>
-            Ниже вы можете видеть список бирж труда с которыми я работаю.
-          </p>
-
-          <div class="about-awards-wrap">
-
-            <div class="awards-list">
-              <a href="#" class="award-box active">
-                KWORK
-                <span class="award-year">
-                  <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
-                  <span>2024</span>
-                </span>
-              </a>
-              <a href="#" class="award-box">
-                UPWORK
-                <span class="award-year">
-                  <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
-                  <span>2023</span>
-                </span>
-              </a>
-              <a href="#" class="award-box">
-                WEBLANCER
-                <span class="award-year">
-                  <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
-                  <span>2021, 2022</span>
-                </span>
-              </a>
-              <a href="#" class="award-box">
-                FIVERR
-                <span class="award-year">
-                  <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
-                  <span>2021</span>
-                </span>
-              </a>
-            </div>
-          </div>
-
-          <div class="about-mission">
-            <p>
-              Подробнее о моих услугах вы можете узнать на этом сайте.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="about-bottom">
-        <a
-          href="https://drive.google.com/file/d/1Issw97gs-kreC7QWev66jO6YC2FdF0L0/view"
-          target="_blank"
-          class="theme-btn"
-          download
-          >Download Resume</a
-        >
-        <span class="est-date">[ est. 2012 ]</span>
       </div>
     </div>
-  </section>
+    <div class="custom-row">
+      <div class="about-left-img">
+        <img src="{% static 'website' %}/imgs/about-2.jpg" alt="About" />
+      </div>
+      <div class="about-content">
+        <span class="about-title">[ lorem ipsum ]</span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, assumenda quam. Sunt perspiciatis cupiditate facere doloribus saepe corrupti assumenda, rem dignissimos tempore laboriosam numquam porro enim. Consequatur ex quaerat facilis!</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus ipsum, blanditiis ipsam doloribus, quisquam dolorem recusandae perferendis saepe, autem quis ad accusamus. Voluptatem, numquam harum. Dolore corporis assumenda culpa similique?</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero laboriosam temporibus perspiciatis voluptas suscipit et ipsam accusantium sapiente vitae quia autem at nisi, distinctio recusandae. Iusto, suscipit. Optio, officiis quam.</p>
+        <div class="about-awards-wrap">
+          <div class="awards-list">
+            {% for object in objects %}
+              <a href="{{ object.link }}" class="award-box {% if forloop.counter == 1 %}active{% endif %}">
+                {{ object.name }}
+                <span class="award-year">
+                  <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
+                  <span>{{ object.reviews_count }} отзывов</span>
+                </span>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="about-mission">
+          <p>Подробнее о моих услугах вы можете узнать на этом сайте.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

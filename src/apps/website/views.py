@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 
 from apps.services.models import Technology, TechnologyArea
+from apps.marketplaces.models import Marketplace
 
 from . import models
 
@@ -13,6 +14,7 @@ class HomeView(TemplateView):
         context['objects_working_experience'] = models.WorkingExperience.objects.all()  # noqa
         context['objects_technology'] = Technology.objects.all()  # noqa
         context['objects_technology_area'] = TechnologyArea.objects.all()  # noqa
+        context['objects_marketplace'] = Marketplace.objects.all()
         return context
 
 

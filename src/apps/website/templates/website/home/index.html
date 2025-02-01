@@ -9,8 +9,7 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
         {% include 'website/blocks/hero.html' with title='РАЗРАБОТЧИК САЙТОВ' %}
-        {% include './about.html' %}
-        {% include './clients.html' %}
+        {% include './about.html' with objects=objects_marketplace %}
         {% include './process.html' %}
         {% include './motivation.html' %}
         {% include 'website/blocks/services.html' with with_header=True %}
