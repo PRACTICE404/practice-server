@@ -1,10 +1,12 @@
 {% load static %}
 
+{% load objects %}
+
 <section class="about-sec">
   <div class="container">
     <div class="section-header">
       <div class="left">
-        <h2 class="title"><span class="overflow-hidden"><span class="timeline-anim scroll-animation text-red" data-animation="slide_down">который тебе нужен.</span></span></h2>
+        <h2 class="title"><span class="overflow-hidden"><span class="timeline-anim scroll-animation text-red" data-animation="slide_down">МОЙ КОД.</span></span></h2>
       </div>
       <div class="section-header-right">
         <div class="section-subtitle">
@@ -26,9 +28,10 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero laboriosam temporibus perspiciatis voluptas suscipit et ipsam accusantium sapiente vitae quia autem at nisi, distinctio recusandae. Iusto, suscipit. Optio, officiis quam.</p>
         <div class="about-awards-wrap">
           <div class="awards-list">
-            {% for object in objects %}
-              <a href="{{ object.link }}" class="award-box {% if forloop.counter == 1 %}active{% endif %}">
-                {{ object.name }}
+            {% get_marketplace_accounts as marketplace_accounts %}
+            {% for object in marketplace_accounts %}
+              <a href="{{ object.link|default:'#' }}" class="award-box {% if forloop.counter == 1 %}active{% endif %}">
+                {{ object.marketplace }}
                 <span class="award-year">
                   <img src="{% static 'website' %}/imgs/angle-arrow.svg" alt="Arrow" />
                   <span>{{ object.reviews_count }} отзывов</span>

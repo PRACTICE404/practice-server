@@ -8,14 +8,12 @@
 
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        {% include 'website/blocks/hero.html' with title='РАЗРАБОТЧИК САЙТОВ' %}
+        {% include 'website/blocks/hero.html' with title='ТВОЙ БИЗНЕС,' %}
         {% include './about.html' with objects=objects_marketplace %}
         {% include './process.html' %}
         {% include './motivation.html' %}
         {% include 'website/blocks/services.html' with with_header=True %}
-        {% include './experience.html' with objects_working_experience=objects_working_experience %}
         {% include './favourite-stack.html' with objects_technology=objects_technology objects_technology_area=objects_technology_area %}
-        {% include './testimonial.html' %}
         {% include 'website/blocks/faq.html' %}
         {% include 'website/blocks/cta.html' %}
         {% include 'website/blocks/footer.html' %}

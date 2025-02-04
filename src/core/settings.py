@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.sessions_',
     'apps.marketplaces',
     'apps.services',
+    'apps.socials',
     'apps.posts',
     'apps.positions',
     'apps.positions.developer',

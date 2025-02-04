@@ -1283,7 +1283,7 @@ a.link-with-border:hover {
 .process-sec .process-img {
     flex: none;
     width: 675px;
-    height: 408px;
+    height: 675px;
     position: relative;
     overflow: hidden;
 }

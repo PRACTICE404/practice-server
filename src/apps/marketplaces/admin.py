@@ -7,14 +7,6 @@ from . import models
 class MarketplaceAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'reviews_count',
-        'is_active'
-    )
-    list_editable = (
-        'is_active',
-    )
-    list_filter = (
-        'is_active',
     )
 
 

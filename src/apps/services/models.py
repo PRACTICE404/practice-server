@@ -57,6 +57,7 @@ class Service(Record):
     description = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_turnkey = models.BooleanField(default=False)
+    description = models.TextField()
 
     technology_areas = models.ManyToManyField(TechnologyArea, blank=True)
 
