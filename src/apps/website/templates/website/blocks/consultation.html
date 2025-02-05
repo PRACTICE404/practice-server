@@ -1,0 +1,8 @@
+{% load objects %}
+
+{% get_website_settings as settings %}
+{% if settings.consultation_price %}
+    КОНСУЛЬТАЦИЯ - {{ settings.consultation_price }}$
+{% else %}
+    БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ
+{% endif %}

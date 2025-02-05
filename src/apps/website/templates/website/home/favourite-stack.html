@@ -1,5 +1,7 @@
 {% load static %}
 
+{% load objects %}
+
 <section class="experience-sec favourite-stack-sec">
   <div class="container">
     <div class="section-header sticky-statement3">
@@ -8,19 +10,24 @@
       </div>
     </div>
     <div class="experience-lists">
-      {% for object in objects_technology_area %}
+      {% get_technology_areas as technology_areas %}
+      {% for object in technology_areas|slice:":7" %}
         <div class="experience-box scroll-animation" data-animation="slide_down2">
           <div class="left">
             <img src="{% static 'website' %}/imgs/figma-icon.svg" alt="Icon" />
             <div class="experience-content">
-              <a href="">
-                <h5>{{ object.name }} <span class="experience-date">{{ object.created }}</span></h5>
+              <a href="#">
+                <h5 class="mb-0">{{ object.name }}</h5>
               </a>
+              <span class="experience-date mb-3">{{ object.created }}</span>
               <span class="designation text-muted">{{ object.technologies.count }} технологий</span>
             </div>
           </div>
         </div>
       {% endfor %}
+      <p class="h5 mb-0 mt-5">
+        <a class="theme-btn" href="#">Нажмите что бы увидеть все технологии&nbsp;&nbsp;[{{technology_areas.count}}]</a>
+      </p>
     </div>
   </div>
 </section>

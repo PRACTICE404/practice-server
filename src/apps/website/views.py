@@ -6,36 +6,31 @@ class HomeView(TemplateView):
 
 
 class ServicesView(TemplateView):
-    template_name = 'website/services/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class TechnologiesListView(TemplateView):
-    template_name = 'website/technologies/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['objects_technology'] = Technology.objects.all()  # noqa
-        return context
+    template_name = 'website/maintenance.html'
 
 
 class PortfolioView(TemplateView):
-    template_name = 'website/portfolio/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class PortfolioDetailView(TemplateView):
-    template_name = 'website/portfolio-detail/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class BlogView(TemplateView):
-    template_name = 'website/blog/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class BlogDetailView(TemplateView):
-    template_name = 'website/blog-detail/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class PlansView(TemplateView):
-    template_name = 'website/plans/index.html'
+    template_name = 'website/maintenance.html'
 
 
 class ContactsView(TemplateView):

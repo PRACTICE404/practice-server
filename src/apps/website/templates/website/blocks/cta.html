@@ -1,4 +1,5 @@
 {% load static %}
+{% load objects %}
 
 <section class="cta-sec">
   <div class="container">
@@ -12,26 +13,17 @@
                 transform: translate(0px, 0px);
               ">КОНТАКТЫ</span></span></h2>
         </div>
-        <a href="./contact.html" class="theme-btn">ДОСТУПЕН 24/7</a>
+        <a href="./contact.html" class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</a>
         <ul class="social-links-text">
-          <li>
-            <a href="https://instagram.com" target="_blank" class="splite-text-anim">
-              <span>Instagram <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-              <span>Instagram <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com" target="_blank" class="splite-text-anim">
-              <span>Twitter <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-              <span>Twitter <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://facebook.com" target="_blank" class="splite-text-anim">
-              <span>Facebook <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-              <span>Facebook <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
-            </a>
-          </li>
+          {% get_social_accounts as social_accounts %}
+          {% for object in social_accounts %}
+            <li>
+              <a href="{{ object.link }}" target="_blank" class="splite-text-anim">
+                <span>{{ object.title }} <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+                <span>{{ object.title }} <img src="{% static 'website' %}/imgs/arrow.svg" alt="Icon" /></span>
+              </a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
 

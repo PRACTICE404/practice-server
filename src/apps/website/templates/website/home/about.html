@@ -1,17 +1,19 @@
 {% load static %}
-
 {% load objects %}
+
 
 <section class="about-sec">
   <div class="container">
     <div class="section-header">
       <div class="left">
-        <h2 class="title"><span class="overflow-hidden"><span class="timeline-anim scroll-animation text-red" data-animation="slide_down">МОЙ КОД.</span></span></h2>
+        <h2 class="title"><span class="overflow-hidden"><span class="timeline-anim scroll-animation text-red text-primary" data-animation="slide_down">(МОЙ КОД).</span></span></h2>
       </div>
       <div class="section-header-right">
         <div class="section-subtitle">
           <span class="white-circle"></span>
-          <span class="theme-btn primary-bg">`консультация</span>
+          <span class="theme-btn primary-bg">
+            {% include 'website/blocks/consultation.html' %}
+          </span>
         </div>
       </div>
     </div>
@@ -20,12 +22,22 @@
         <img src="{% static 'website' %}/imgs/about-2.jpg" alt="About" />
       </div>
       <div class="about-content">
-        <span class="about-title">[ lorem ipsum ]</span>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, assumenda quam. Sunt perspiciatis cupiditate facere doloribus saepe corrupti assumenda, rem dignissimos tempore laboriosam numquam porro enim. Consequatur ex quaerat facilis!</p>
+        <span class="about-title">[ Сначала давай знакомиться... ]</span>
+        <p>
+          Мои партнёры зовут меня Александр, последние 3 года я делаю разные веб-сайты для бизнеса.
+        </p>
         <br />
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus ipsum, blanditiis ipsam doloribus, quisquam dolorem recusandae perferendis saepe, autem quis ad accusamus. Voluptatem, numquam harum. Dolore corporis assumenda culpa similique?</p>
+        <p>
+          За подробностями листайте дальше.
+        </p>
         <br />
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero laboriosam temporibus perspiciatis voluptas suscipit et ipsam accusantium sapiente vitae quia autem at nisi, distinctio recusandae. Iusto, suscipit. Optio, officiis quam.</p>
+        <p>
+          У тебя есть какой-то товар или услуга? Или может есть идея для SASS проекта?
+        </p>
+        <br>
+        <p>
+          Можешь написать мне тут, либо на любой удобной фриланс-бирже.
+        </p>
         <div class="about-awards-wrap">
           <div class="awards-list">
             {% get_marketplace_accounts as marketplace_accounts %}
@@ -39,9 +51,6 @@
               </a>
             {% endfor %}
           </div>
-        </div>
-        <div class="about-mission">
-          <p>Подробнее о моих услугах вы можете узнать на этом сайте.</p>
         </div>
       </div>
     </div>

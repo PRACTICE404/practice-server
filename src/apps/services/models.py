@@ -58,6 +58,7 @@ class Service(Record):
     is_active = models.BooleanField(default=True)
     is_turnkey = models.BooleanField(default=False)
     description = models.TextField()
+    price_from = models.PositiveIntegerField(blank=True, null=True)
 
     technology_areas = models.ManyToManyField(TechnologyArea, blank=True)
 

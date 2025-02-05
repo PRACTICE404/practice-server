@@ -1,4 +1,5 @@
 {% load static %}
+{% load objects %}
 
 <footer class="footer-sec">
     <div class="container">
@@ -13,10 +14,11 @@
       </div>
 
       <div class="copyright-wrap">
-        <p>&copy;2024 design</p>
+        <p>&copy;2025 ALEKSDEV</p>
         <p>
           <img src="{% static 'website' %}/imgs/white-circle-shape.svg" alt="Shape" />
-          c-09, toronto 632 7518760
+          {% get_website_settings as settings %}
+          {{ settings.slogan }}
         </p>
       </div>
     </div>

@@ -3,6 +3,7 @@ from django import template
 from apps.marketplaces.models import MarketplaceAccount
 from apps.services.models import Service, TechnologyArea, Faq
 from apps.socials.models import SocialNetworkAccount
+from apps.website.models import Stats, WebsiteSettings
 
 
 register = template.Library()
@@ -31,3 +32,13 @@ def get_faq():
 @register.simple_tag
 def get_social_accounts():
     return SocialNetworkAccount.objects.all()
+
+
+@register.simple_tag
+def get_stats():
+    return Stats.load()
+
+
+@register.simple_tag
+def get_website_settings():
+    return WebsiteSettings.load()

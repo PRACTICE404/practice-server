@@ -1,6 +1,6 @@
 :root {
     --dark: #000000;
-    --darkBg: #000000;
+    --darkBg: #1a1a1a;
     --whiteColor: #ffffff;
     --whiteBg: #ffffff;
     --primary: #B8FF34;
@@ -813,6 +813,9 @@ a.link-with-border:hover {
 .service-faq-item {
     background: none;
     border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 .service-faq-item .accordion-header button {
     background: none;

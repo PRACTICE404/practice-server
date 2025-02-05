@@ -1,0 +1,19 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+  <main class="page-main error-page">
+    {% include 'website/blocks/popup-menu.html' %}
+    <!-- ===== 404 Area Start ===== -->
+    <div class="error-sec">
+      <div class="container">
+        <div class="error-content">
+          <h1>COMING SOON...</h1>
+          <p>This page are under maintenance.</p>
+          <a href="{% url 'home' %}" class="theme-btn primary-bg">BACK TO HOME PAGE</a>
+        </div>
+      </div>
+      {% include 'website/blocks/footer.html' %}
+    </div>
+    <!-- ===== 404 Area End ===== -->
+  </main>
+{% endblock %}

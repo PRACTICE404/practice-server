@@ -1,12 +1,15 @@
 {% load static %}
 
+{% load objects %}
+
 <section class="hero-sec">
   <div class="container">
     <div class="hero-sec-top scroll-animation" data-animation="slide_up">
       <div class="hero-left">
         <a href="{% url 'home' %}" class="logo">ALEKS DEV <img src="{% static 'website' %}/imgs/r.svg" alt="Symble" /></a>
         <div class="location-and-time">
-          Турция, Стамбул / <span class="realtime"></span>
+          {% get_website_settings as settings %}
+          {{ settings.location }} / <span class="realtime"></span>
         </div>
       </div>
       <div class="hero-right">
@@ -27,7 +30,7 @@
           </ul>
         </nav>
         <div>
-          <span
+          {% comment %} <span
             class="dropdown"
             data-bs-theme="dark"
           >
@@ -50,7 +53,7 @@
                 <a class="dropdown-item" href="#">TÜRKÇE</a>
               </li>
             </ul>
-          </span>
+          </span> {% endcomment %}
           <a href="#" class="show-navigation-popover theme-btn">МЕНЮ</a>
         </div>
       </div>
