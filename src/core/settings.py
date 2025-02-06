@@ -10,9 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['localhost', 'aleksdev.xyz']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz']
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz']
+ALLOWED_HOSTS = ['localhost', 'aleksdev.xyz', 'blog.aleksdev.xyz']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz', 'https://blog.aleksdev.xyz']  # noqa
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz', 'https://blog.aleksdev.xyz']  # noqa
 CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
+    'core.middleware.SubdomainMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
