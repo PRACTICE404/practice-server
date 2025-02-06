@@ -23,7 +23,7 @@
       <div class="section-header-right">
         <div class="section-subtitle">
           <span class="white-circle"></span>
-          <span class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</span>
+          <a href="{% url 'contacts' %}" class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
           </div>
         {% endfor %}
         <p class="h5 mb-0 mt-5">
-          <a class="theme-btn" href="#">Нажмите что бы увидеть все вопросы&nbsp;&nbsp;[{{technology_areas.count}}]</a>
+          <a class="theme-btn" href="{% url 'faq-list' %}">Нажмите что бы увидеть все вопросы&nbsp;&nbsp;[{{faq.count}}]</a>
         </p>
         {% comment %} <div class="accordion-item faq-item service-faq-item">
           <h2 class="accordion-header" id="headingFaqTwo">

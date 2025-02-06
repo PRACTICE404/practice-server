@@ -13,7 +13,7 @@
                 transform: translate(0px, 0px);
               ">КОНТАКТЫ</span></span></h2>
         </div>
-        <a href="./contact.html" class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</a>
+        <a href="{% url 'contacts' %}" class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</a>
         <ul class="social-links-text">
           {% get_social_accounts as social_accounts %}
           {% for object in social_accounts %}

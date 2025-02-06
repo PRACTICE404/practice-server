@@ -15,5 +15,6 @@ urlpatterns = (
     path('blog/', views.BlogView.as_view(), name='post-list'),
     path('blog-detail/', views.BlogDetailView.as_view(), name='post-detail'),
     path('plans/', views.PlansView.as_view(), name='plan-list'),
-    path('contacts/', views.ContactsView.as_view(), name='contacts')
+    path('contact/', views.ContactsView.as_view(), name='contacts'),
+    path('faq/', views.FaqView.as_view(), name='faq-list')
 )

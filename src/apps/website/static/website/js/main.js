@@ -457,68 +457,6 @@ $(function () {
         });
     });
 
-
-
-    // Contact Form
-    const form = document.getElementById("contactForm");
-    const result = document.getElementById("result");
-
-    if (form) {
-        form.addEventListener("submit", function (e) {
-            const formData = new FormData(form);
-            e.preventDefault();
-            var object = {};
-            formData.forEach((value, key) => {
-                object[key] = value;
-            });
-            if (object.email == '') {
-                result.innerHTML = 'Email field is required!';
-                return;
-            }
-            var json = JSON.stringify(object);
-            result.innerHTML = "Please wait...";
-            result.style.display = 'block';
-
-            fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: json
-            })
-                .then(async (response) => {
-                    let json = await response.json();
-                    if (response.status == 200) {
-                        result.style.display = "block";
-                        result.innerHTML = json.message;
-                        result.classList.remove("text-gray-500");
-                        result.classList.add("text-green-500");
-                    } else {
-                        result.style.display = "block";
-                        console.log(response);
-                        result.innerHTML = json.message;
-                        result.classList.remove("text-gray-500");
-                        result.classList.add("text-red-500");
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                    result.style.display = "block";
-                    result.innerHTML = "Something went wrong!";
-                })
-                .then(function () {
-                    form.reset();
-                    setTimeout(() => {
-                        result.style.display = "none";
-                    }, 5000);
-                });
-        });
-    }
-
-        
-
-
 });
 
 

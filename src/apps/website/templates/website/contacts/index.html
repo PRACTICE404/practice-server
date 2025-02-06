@@ -15,3 +15,17 @@
     </div>
   </main>
 {% endblock %}
+
+{% block scripts %}
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const phoneInput = document.querySelector('#waForm input[name="phone"]')
+      const maskOptionsPhone = {
+        mask: '+9\\0 (000) 000-00-00',
+        lazy: false,
+        overwrite: false
+      };
+      IMask(phoneInput, maskOptionsPhone)
+    })
+  </script>
+{% endblock %}

@@ -16,7 +16,7 @@
     
         <!-- ===== LineAwesome ===== -->
         <link rel="stylesheet"
-            href="./assets/css/line-awesome.min.css">
+            href="{% static 'website' %}/css/line-awesome.min.css">
     
     
         <!-- ===== Fonts ===== -->
@@ -63,6 +63,10 @@
     <script src="{% static 'website' %}/js/jarallax-element.min.js"></script>
     <script src="{% static 'website' %}/js/main.js"></script>
     <script src="{% static 'website' %}/js/themescroll.js"></script>
+    <script src="{% static 'website' %}/js/imask.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>

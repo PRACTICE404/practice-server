@@ -6,7 +6,6 @@ $(function() {
 
 
     gsap.config({ trialWarn: false });
-    console.clear();
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
     let smoother = ScrollSmoother.create({ 

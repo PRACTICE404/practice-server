@@ -18,7 +18,7 @@
         <div class="section-header-right">
           <div class="section-subtitle">
             <span class="white-circle"></span>
-            <span class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</span>
+            <a href="{% url 'contacts' %}" class="theme-btn primary-bg">{% include 'website/blocks/consultation.html' %}</a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
         </div>
       {% endfor %}
       <p class="h5 mt-5">
-        <a class="theme-btn" href="#">Нажмите что бы увидеть все услуги&nbsp;&nbsp;[{{services.count}}]</a>
+        <a class="theme-btn" href="{% url 'service-list' %}">Нажмите что бы увидеть все услуги&nbsp;&nbsp;[{{services.count}}]</a>
       </p>
     </div>
 
