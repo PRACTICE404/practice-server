@@ -342,6 +342,13 @@ a.link-with-border:hover {
     -webkit-transition: opacity 0.2s ease-in-out 0.5s;
     transition: opacity 0.2s ease-in-out 0.5s;
 }
+
+@media (hover: none) and (pointer: coarse) {
+    #magic-cursor {
+        display: none;
+    }
+}
+
 #ball {
     position: fixed;
     width: 40px;

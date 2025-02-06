@@ -1,5 +1,9 @@
 from datetime import timedelta
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*0&2g0x&d@=xt8p%^2zfvrf3a^v=j41$pdt1p0@+iu&7bviam#'  # NOQA
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['localhost', 'aleksdev.xyz']
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz']
