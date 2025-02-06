@@ -19,7 +19,7 @@
               <a href="#">
                 <h5 class="mb-0">{{ object.name }}</h5>
               </a>
-              <span class="experience-date mb-3">{{ object.created }}</span>
+              <span class="experience-date mb-3">+ {{ object.created|date:"j E (Y)" }}</span>
               <span class="designation text-muted">{{ object.technologies.count }} технологий</span>
             </div>
           </div>

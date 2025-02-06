@@ -129,5 +129,6 @@ class PortfolioAdmin(admin.ModelAdmin):
 class FaqAdmin(admin.ModelAdmin):
     list_display = (
         'text_question',
+        'text_answer',
         'service'
     )
