@@ -14,9 +14,9 @@ SECRET_KEY = 'django-insecure-*0&2g0x&d@=xt8p%^2zfvrf3a^v=j41$pdt1p0@+iu&7bviam#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+ALLOWED_HOSTS = ['localhost', 'aleksdev.xyz']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'https://aleksdev.xyz']
 CORS_ALLOW_CREDENTIALS = True
 
 
