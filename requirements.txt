@@ -15,6 +15,7 @@ packaging==24.1
 pillow==11.0.0
 pycodestyle==2.12.1
 pyflakes==3.2.0
+python-dotenv==1.0.1
 python-slugify==8.0.4
 six==1.16.0
 sqlparse==0.5.1
